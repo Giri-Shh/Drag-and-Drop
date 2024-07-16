@@ -1,0 +1,50 @@
+<mvc:View xmlns:dnd="sap.ui.core.dnd" controllerName="project1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:control="DragNDrop.controls" xmlns:giri="project1.controls"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+    
+        <content />
+        <Panel height="400px">
+            <Table items="{data>/fruits}"  headerText="FRUIT LIST">
+            <dragDropConfig >
+                <dnd:DragInfo sourceAggregation="items"></dnd:DragInfo>
+            </dragDropConfig>
+            <columns>
+                <Column >
+                    <Text text="Name"></Text>
+                </Column>
+                <Column >
+                    <Text text="Type"></Text>
+                </Column>
+                <Column >
+                    <Text text="Color"></Text>
+                </Column>
+                 <Column >
+                    <Text text="IMAGE"></Text>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem >
+                    <cells>
+                        <Text text="{data>name}"></Text>
+                        <Button text="{data>type}"></Button>
+                        <Text text="{data>color}"></Text>
+                        <Image src="{data>imageURL}" width="50px"></Image>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        </Panel>
+        <footer>
+					<Bar>
+						<contentMiddle>
+							<giri:DeleteButton id="deleteButtonId" text="Delete" type="Reject" icon="sap-icon://delete" width="30%">
+								<giri:dragDropConfig>
+									<dnd:DropInfo drop="onDrop"/>
+								</giri:dragDropConfig>
+							</giri:DeleteButton>
+						</contentMiddle>
+					</Bar>
+				</footer>
+    </Page>
+</mvc:View>
